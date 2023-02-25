@@ -27,23 +27,21 @@ $(document).ready(function () {
     timeBlockIDClicked = parseInt($(this).parent().attr("data-time"));
     console.log(timeBlockIDClicked);
    
-    // Save clicked TimeBlock ID to localStorage.
-    function saveTimeBlockedIDClicktoStorage(timeBlockIDClicked) {
-    let test = localStorage.setItem('timeBlockIDClicked', JSON.stringify(timeBlockIDClicked));
-    console.log(test)
+  // This code should use the id in the containing time-block as a key to save the user input in
+  // local storage. 
+    // Need to call save function to activate it
+    saveIDClicktoStorage();
 
-    saveTimeBlockedIDClicktoStorage();
-}
+    // Save clicked TimeBlock ID to localStorage.
+    function saveIDClicktoStorage() {
+      localStorage.setItem('keyID',(timeBlockIDClicked));
+      localStorage.getItem("keyID");
+      console.log(localStorage.getItem('keyID'))
+      }
 
   });
 
-  // $("#hour-4").click(function(event){
-  //   console.log(event.target)
-  // })
-
-
-  // This code should use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
+//  HINT: What does `this` reference in the click listener
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
