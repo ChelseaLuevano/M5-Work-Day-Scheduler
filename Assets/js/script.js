@@ -2,24 +2,16 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
-$(document).ready(function () {
+$(function () {
   let today = dayjs();
-  // let divClickedHour = $("div");
-  // let hourNine = $("#hour-9");
-  // let hourTen = $("#hour-10");
-  // let hourEleven = $("#hour-11");
-  // let hourTwelve = $("#hour-12");
-  // let hourOne = $("#hour-1");
-  // let hourTwo = $("#hour-2");
-  // let hourThree = $("#hour-3");
-  // let hourFour = $("#hour-4");
-  // let hourFive = $("#hour-5");
-
-  let timeBlockIDClicked ;
+  let eventText = $("textArea");
+  let timeBlockIDClicked;
+  let newEvent;
 
   // TODO: Add code to display the current date in the header of the page.
   $('#currentDay').text(today.format('dddd, MMMM Do'));
 
+  
 
   // TODO: Add a listener for click events on the save button.
   $(".saveBtn").click(function (event) {
@@ -33,6 +25,16 @@ $(document).ready(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   //
+    // User adds event
+    parentDiv = $(this).parent();
+    console.log(parentDiv);
+    // newEvent = $(parentDiv).children($("textArea").val());
+    newEvent = $(parentDiv).find(eventText.val());
+    console.log(newEvent);
+    // timeBlockIDClicked.push(newEvent);
+
+    
+
     // Need to call save function to activate it
     saveIDClicktoStorage();
 
@@ -40,7 +42,7 @@ $(document).ready(function () {
     function saveIDClicktoStorage() {
       localStorage.setItem('ID Key',(timeBlockIDClicked));
       localStorage.getItem("ID Key");
-      console.log(localStorage.getItem('ID Key'))
+      // console.log(localStorage.getItem('ID Key'))
       }
 
   });
@@ -89,12 +91,11 @@ $(document).ready(function () {
   //
   function readEventsFromStorage() {
     let updatedEvent = localStorage.getItem("ID Key");
-    if (updatedEvents) {
-      // save content that user changed in event
-      textarea.val()
-    }
+    // if (updatedEvents) {
+    //   // save content that user changed in event
+    //   textarea.val()
+    // }
   }
-
 
 
 });
