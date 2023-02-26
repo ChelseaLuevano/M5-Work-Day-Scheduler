@@ -31,7 +31,7 @@ $(document).ready(function () {
     console.log(textAreaValue);
   
 
-    
+    // new object to save in loal storage
      newEvent = {
       dataTimeID: timeBlockIDClicked,
       text: textAreaValue,
@@ -42,13 +42,11 @@ $(document).ready(function () {
       storageEvents.push(newEvent);
 
     // Need to call save function to activate it
-    saveEventtoStorage();
+      saveEventtoStorage();
     
     // Save new event information
     function saveEventtoStorage() {
       localStorage.setItem('new event', JSON.stringify(newEvent));
-      JSON.parse(localStorage.getItem("new event"));
-      console.log(localStorage.getItem('new event'))
       }
     // Save clicked TimeBlock ID to localStorage.
     // function saveIDClicktoStorage() {
