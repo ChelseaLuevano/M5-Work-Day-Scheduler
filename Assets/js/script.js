@@ -2,7 +2,7 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
-$(function () {
+$(document).ready(function () {
   let today = dayjs();
   let eventText = $("textArea");
   let timeBlockIDClicked;
@@ -15,9 +15,6 @@ $(function () {
 
   // TODO: Add a listener for click events on the save button.
   $(".saveBtn").click(function (event) {
-
-    timeBlockIDClicked = parseInt($(this).parent().attr("data-time"));
-    console.log(timeBlockIDClicked);
    
   // This code should use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -26,24 +23,33 @@ $(function () {
   // useful when saving the description in local storage?
   //
     // User adds event
-    parentDiv = $(this).parent();
-    console.log(parentDiv);
-    // newEvent = $(parentDiv).children($("textArea").val());
-    newEvent = $(parentDiv).find(eventText.val());
-    console.log(newEvent);
-    // timeBlockIDClicked.push(newEvent);
+    timeBlockIDClicked = parseInt($(this).parent().attr("data-time"));
+    console.log(timeBlockIDClicked);
+    textAreaValue = $(this).siblings(".description").val();
+    console.log(textAreaValue);
+  
 
+    // timeBlockIDClicked.push(textAreaValue);
     
+    var newEvent = {
+      dataTimeID: timeBlockIDClicked,
+      text: textAreaValue,
+    }
 
     // Need to call save function to activate it
     saveIDClicktoStorage();
 
-    // Save clicked TimeBlock ID to localStorage.
     function saveIDClicktoStorage() {
-      localStorage.setItem('ID Key',(timeBlockIDClicked));
-      localStorage.getItem("ID Key");
-      // console.log(localStorage.getItem('ID Key'))
+      localStorage.setItem('new event',(newEvent));
+      localStorage.getItem("new event");
+      console.log(localStorage.getItem('new event'))
       }
+    // Save clicked TimeBlock ID to localStorage.
+    // function saveIDClicktoStorage() {
+    //   localStorage.setItem('ID Key',(timeBlockIDClicked));
+    //   localStorage.getItem("ID Key");
+    //   // console.log(localStorage.getItem('ID Key'))
+    //   }
 
   });
 
