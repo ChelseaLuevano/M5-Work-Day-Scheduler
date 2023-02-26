@@ -4,9 +4,11 @@
 
 $(document).ready(function () {
   let today = dayjs();
-  let eventText = $("textArea");
+  let timeBlockID;
   let timeBlockIDClicked;
   let newEvent;
+  let textAreaValue;
+  let storageEvents;
 
   // TODO: Add code to display the current date in the header of the page.
   $('#currentDay').text(today.format('dddd, MMMM Do'));
@@ -29,15 +31,19 @@ $(document).ready(function () {
     console.log(textAreaValue);
   
 
-    // timeBlockIDClicked.push(textAreaValue);
     
-    var newEvent = {
+     newEvent = {
       dataTimeID: timeBlockIDClicked,
       text: textAreaValue,
     };
 
+    // Variable made to determine local storage projects 
+      storageEvents = readEventsFromStorage(); 
+      storageEvents.push(newEvent);
+
     // Need to call save function to activate it
     saveEventtoStorage();
+    
     // Save new event information
     function saveEventtoStorage() {
       localStorage.setItem('new event', JSON.stringify(newEvent));
@@ -96,10 +102,9 @@ $(document).ready(function () {
   // attribute of each time-block be used to do this?
   //
   function readEventsFromStorage() {
-    let updatedEvent = localStorage.getItem("ID Key");
-    // if (updatedEvents) {
-    //   // save content that user changed in event
-    //   textarea.val()
+    JSON.parse(localStorage.getItem("new event"));
+    // if (text !== null) {
+    //     $("textarea") = text;
     // }
   }
 
