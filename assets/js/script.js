@@ -13,7 +13,13 @@ $(document).ready(function () {
   // TODO: Add code to display the current date in the header of the page.
   $('#currentDay').text(today.format('dddd, MMMM Do'));
 
-  
+   //read Events function
+   function readEventsFromStorage() {
+    JSON.parse(localStorage.getItem("new event"));
+    // if (text !== null) {
+    //     $("textarea") = text;
+    // }
+    }
 
   // TODO: Add a listener for click events on the save button.
   $(".saveBtn").click(function (event) {
@@ -40,6 +46,7 @@ $(document).ready(function () {
     // Variable made to determine local storage projects 
       storageEvents = readEventsFromStorage(); 
       storageEvents.push(newEvent);
+
 
     // Need to call save function to activate it
       saveEventtoStorage();
@@ -99,12 +106,7 @@ $(document).ready(function () {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  function readEventsFromStorage() {
-    JSON.parse(localStorage.getItem("new event"));
-    // if (text !== null) {
-    //     $("textarea") = text;
-    // }
-  }
+  
 
 
 });
