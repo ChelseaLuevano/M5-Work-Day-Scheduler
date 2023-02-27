@@ -10,6 +10,7 @@ $(document).ready(function () {
   let textAreaValue;
   let storageEvents;
   let timeBlockDataAttr; 
+  let keyStorage;
 
  
   // TODO: Add code to display the current date in the header of the page.
@@ -86,29 +87,22 @@ $(document).ready(function () {
   // attribute of each time-block be used to do this?
   //
   
+
  //read Events function
  function readEventsFromStorage() {
 
     $(".time-block").each(function () {
 
       timeBlockDataAttr = parseInt($(this).attr("data-time"));
-
-      keyStorage = localStorage.getItem(timeBlockIDClicked);
-      console.log(keyStorage);
       
+      keyStorage = localStorage.getItem(timeBlockDataAttr);
 
-      
-      if (timeBlockDataAttr === keyStorage) {
-        // update the value of textarea
-        $("textarea").val() = localStorage.getItem(timeBlockIDClicked);
-        }
-       else if (keyStorage != null){
-       }
-       else {
+      // Find child element and set to what data was in storage
+      $(this).children(".description").val(keyStorage); 
 
-       }
       })
-
+     
   }
-
+  readEventsFromStorage();
+ 
 });
