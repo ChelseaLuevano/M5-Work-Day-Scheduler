@@ -9,7 +9,9 @@ $(document).ready(function () {
   let newEvent;
   let textAreaValue;
   let storageEvents;
+  let timeBlockDataAttr; 
 
+ 
   // TODO: Add code to display the current date in the header of the page.
   $('#currentDay').text(today.format('dddd, MMMM Do'));
 
@@ -88,20 +90,25 @@ $(document).ready(function () {
  function readEventsFromStorage() {
 
     $(".time-block").each(function () {
-      if (parseInt($(this).attr("data-time")) === localStorage.getItem(timeBlockID)) {
-      console.log ("butterflies");
+
+      timeBlockDataAttr = parseInt($(this).attr("data-time"));
+
+      keyStorage = localStorage.getItem(timeBlockIDClicked);
+      console.log(keyStorage);
+      
+
+      
+      if (timeBlockDataAttr === keyStorage) {
+        // update the value of textarea
+        $("textarea").val() = localStorage.getItem(timeBlockIDClicked);
         }
-       else () 
+       else if (keyStorage != null){
+       }
+       else {
+
+       }
       })
 
-  // let x = localStorage.getItem(textAreaValue);
-  // console.log(x)
-  // $('10 .description').val(localStorage.getItem('hour-10'));
-
-  // let y = $('10 .description')
-  // console.log(y)
-  // $('11 .description').val(localStorage.getItem('hour-11'));
- 
   }
 
 });
