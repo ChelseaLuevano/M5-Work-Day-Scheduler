@@ -13,13 +13,6 @@ $(document).ready(function () {
   // TODO: Add code to display the current date in the header of the page.
   $('#currentDay').text(today.format('dddd, MMMM Do'));
 
-   //read Events function
-   function readEventsFromStorage() {
-    JSON.parse(localStorage.getItem("new event"));
-    // if (text !== null) {
-    //     $("textarea") = text;
-    // }
-    }
 
   // TODO: Add a listener for click events on the save button.
   $(".saveBtn").click(function (event) {
@@ -36,31 +29,16 @@ $(document).ready(function () {
     textAreaValue = $(this).siblings(".description").val();
     console.log(textAreaValue);
   
-
-    // new object to save in loal storage
-     newEvent = {
-      dataTimeID: timeBlockIDClicked,
-      text: textAreaValue,
-    };
-
-    // Variable made to determine local storage projects 
+    // // Variable made to determine local storage projects 
       storageEvents = readEventsFromStorage(); 
-      storageEvents.push(newEvent);
-
-
+   
     // Need to call save function to activate it
       saveEventtoStorage();
     
-    // Save new event information
-    function saveEventtoStorage() {
-      localStorage.setItem('new event', JSON.stringify(newEvent));
-      }
     // Save clicked TimeBlock ID to localStorage.
-    // function saveIDClicktoStorage() {
-    //   localStorage.setItem('ID Key',(timeBlockIDClicked));
-    //   localStorage.getItem("ID Key");
-    //   // console.log(localStorage.getItem('ID Key'))
-    //   }
+    function saveEventtoStorage() {
+      localStorage.setItem(timeBlockIDClicked, textAreaValue);
+      }
 
   });
 
@@ -107,6 +85,13 @@ $(document).ready(function () {
   // attribute of each time-block be used to do this?
   //
   
-
+ //read Events function
+ function readEventsFromStorage() {
+  let x = $('9 .description').val(localStorage.getItem(textAreaValue));
+  console.log(x)
+  $('10 .description').val(localStorage.getItem('hour-10'));
+  $('11 .description').val(localStorage.getItem('hour-11'));
+ 
+  }
 
 });
