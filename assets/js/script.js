@@ -40,7 +40,7 @@ $(document).ready(function () {
       localStorage.setItem(timeBlockIDClicked, textAreaValue);
       }
 
-  });
+    });
 
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
@@ -77,7 +77,6 @@ $(document).ready(function () {
       };
     });
   }
-  
   colorTimeBlock();
 
   // TODO: Add code to get any user input that was saved in localStorage and set
@@ -87,10 +86,21 @@ $(document).ready(function () {
   
  //read Events function
  function readEventsFromStorage() {
-  let x = $('9 .description').val(localStorage.getItem(textAreaValue));
-  console.log(x)
-  $('10 .description').val(localStorage.getItem('hour-10'));
-  $('11 .description').val(localStorage.getItem('hour-11'));
+
+    $(".time-block").each(function () {
+      if (parseInt($(this).attr("data-time")) === localStorage.getItem(timeBlockID)) {
+      console.log ("butterflies");
+        }
+       else () 
+      })
+
+  // let x = localStorage.getItem(textAreaValue);
+  // console.log(x)
+  // $('10 .description').val(localStorage.getItem('hour-10'));
+
+  // let y = $('10 .description')
+  // console.log(y)
+  // $('11 .description').val(localStorage.getItem('hour-11'));
  
   }
 
